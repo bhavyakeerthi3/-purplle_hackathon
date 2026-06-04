@@ -129,11 +129,25 @@ class AnomalyResponse(BaseModel):
     anomalies: List[AnomalyItem]
 
 
+class EventRecord(BaseModel):
+    event_type: str
+    store_id: Optional[str] = None
+    store_code: Optional[str] = None
+    camera_id: Optional[str] = None
+    track_id: Optional[int] = None
+    id_token: Optional[str] = None
+    event_time: Optional[str] = None
+    event_timestamp: Optional[str] = None
+
+    class Config:
+        extra = "allow"
+
+
 class EventsResponse(BaseModel):
     total: int
     offset: int
     limit: int
-    events: List[Dict[str, Any]]
+    events: List[EventRecord]
 
 
 class FunnelStage(BaseModel):
@@ -517,7 +531,7 @@ def store_funnel(store_id: str):
 @app.get("/api/v1/store/{store_id}/demographics", response_model=DemographicsResponse, tags=["Analytics"])
 def store_demographics(store_id: str):
     """
-    Demographic breakdown of store visitors by gender and age bucket.
+    Demo-mode aggregate demographic breakdown by gender and age bucket.
     """
     events = _load_events()
     store_events = [

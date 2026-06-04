@@ -2,7 +2,7 @@
 
 ## 🔴 Live Demo
 
-**Dashboard**: [https://vercel-dashboard-eta-sand.vercel.app](https://vercel-dashboard-eta-sand.vercel.app)
+**Dashboard**: [https://purplle-intelligence.vercel.app/dashboard](https://purplle-intelligence.vercel.app/dashboard)
 
 
 ---
@@ -56,7 +56,7 @@ Open:
 | `GET /api/v1/store/{store_id}/heatmap` | Peak and average occupancy |
 | `GET /api/v1/store/{store_id}/queue` | Queue metrics |
 | `GET /api/v1/store/{store_id}/funnel` | Conversion funnel analytics |
-| `GET /api/v1/store/{store_id}/demographics` | Visitor demographic breakdown |
+| `GET /api/v1/store/{store_id}/demographics` | Demo-mode aggregated demographic breakdown |
 | `GET /api/v1/sales/summary` | Revenue and brand summary |
 | `GET /api/v1/anomalies` | Operational anomaly alerts |
 | `GET /api/v1/events` | Paginated event log |
@@ -76,6 +76,7 @@ Open:
 - **Dockerized deployment** — One-command `docker-compose up --build` for instant setup.
 - **Live Vercel demo** — Deployed dashboard accessible without local setup.
 - **Conversion funnel analytics** — Entry → Browse → Queue → Purchase pipeline with drop-off rates.
+- **Responsible demographics note** — Age/gender charts are mocked aggregate demo labels for the dashboard/API contract, with production privacy safeguards documented in `ARCHITECTURE.md`.
 
 ---
 
@@ -86,6 +87,12 @@ The hackathon instruction says not to upload datasets or videos to GitHub. This 
 - `data/**/*.mp4`
 - `output/*.mp4`
 - large generated video files
+
+Already-generated annotated clips can be restored locally with:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\import_demo_videos.ps1 -Source "$env:USERPROFILE\Downloads"
+```
 - Python caches
 
 Run the pipeline locally to regenerate outputs.

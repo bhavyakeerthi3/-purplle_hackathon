@@ -15,7 +15,11 @@ data/**/*.mkv
 data/**/*.png
 data/**/*.jpg
 data/**/*.jpeg
-output/*.mp4
+output/output_*.mp4
+
+# Web-ready annotated clips are optional demo artifacts.
+# Keep them local by default; remove this line if you want to commit them.
+output/compressed_*.mp4
 
 
 # Model/download caches

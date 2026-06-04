@@ -13,7 +13,7 @@ Built for the **Purplle Tech Challenge 2026 — Round 2**. Runs in two modes:
 | **Demo mode** | Synthetic events, sales, and anomalies — instant evaluation without videos |
 | **Full pipeline** | YOLOv8 + ByteTrack processing over store CCTV videos in `data/` |
 
-> ⚠️ Do not commit the hackathon dataset or video files. The `.gitignore` excludes local videos, generated analytics, and compressed outputs.
+> ⚠️ Do not commit the hackathon dataset or video files. The `.gitignore` excludes local videos and compressed media while keeping demo JSON/JSONL analytics available for evaluators.
 
 ---
 
@@ -113,6 +113,12 @@ python process_videos.py --skip-compress  # Skip video compression
 python server.py --port 9000             # Custom port
 ```
 
+If you already generated annotated YOLO clips elsewhere, import them into `output/`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\import_demo_videos.ps1 -Source "$env:USERPROFILE\Downloads"
+```
+
 ---
 
 ## 📡 API Highlights
@@ -127,7 +133,7 @@ python server.py --port 9000             # Custom port
 | `GET /api/v1/store/{store_id}/heatmap` | Peak and average occupancy |
 | `GET /api/v1/store/{store_id}/queue` | Queue served, abandoned, wait metrics |
 | `GET /api/v1/store/{store_id}/funnel` | Conversion funnel analytics |
-| `GET /api/v1/store/{store_id}/demographics` | Visitor demographic breakdown |
+| `GET /api/v1/store/{store_id}/demographics` | Demo-mode aggregated demographic breakdown |
 | `GET /api/v1/sales/summary` | Revenue, order, brand summary |
 | `GET /api/v1/sales/hourly` | Revenue by hour |
 | `GET /api/v1/anomalies` | Detected operational anomalies |
@@ -186,6 +192,7 @@ SUBMISSION.md           Concise evaluator guide
 - `config.py` separates business zone definitions from model inference code.
 - API endpoints support filtering, pagination, health checks, and documented contracts.
 - The system degrades gracefully into demo mode when videos or POS data are unavailable.
+- Demographics are demo-mode aggregate labels that show the API/dashboard contract; production use would require consent-aware local inference and no PII storage.
 - In production, JSONL output would be replaced with Kafka/PubSub, object storage, and a time-series or analytical database.
 
 ---
