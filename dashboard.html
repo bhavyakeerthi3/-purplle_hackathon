@@ -1008,7 +1008,7 @@ function makeChart(id, type, labels, datasets, opts = {}) {
 function renderHeatmap(id, cells) {
   const el = document.getElementById(id);
   if (!cells || cells.length === 0) {
-    el.innerHTML = '<div class="empty"><div class="empty-icon">📊</div><div class="empty-text">No data</div></div>';
+    el.innerHTML = '<div class="empty"><div class="empty-icon">—</div><div class="empty-text">No data</div></div>';
     return;
   }
   const maxP = Math.max(...cells.map(c => c.peak_count), 1);
@@ -1028,7 +1028,7 @@ function renderHeatmap(id, cells) {
 function renderDwell(id, zones) {
   const el = document.getElementById(id);
   if (!zones || zones.length === 0) {
-    el.innerHTML = '<div class="empty"><div class="empty-icon">⏱️</div><div class="empty-text">No data</div></div>';
+    el.innerHTML = '<div class="empty"><div class="empty-icon">—</div><div class="empty-text">No data</div></div>';
     return;
   }
   const maxD = Math.max(...zones.map(z => z.avg_dwell_sec), 1);
@@ -1046,7 +1046,7 @@ function renderDwell(id, zones) {
 function renderAnomalies(id, items, limit) {
   const el = document.getElementById(id);
   if (!items || items.length === 0) {
-    el.innerHTML = '<div class="empty"><div class="empty-icon">✅</div><div class="empty-text">No anomalies</div></div>';
+    el.innerHTML = '<div class="empty"><div class="empty-icon">—</div><div class="empty-text">No anomalies</div></div>';
     return;
   }
   
