@@ -139,9 +139,12 @@ docker compose down
 
 ## Quick Start Locally
 
+Demo analytics data is already included in the repository under `output/`, so the dashboard works immediately after cloning:
+
 ```bash
+git clone https://github.com/bhavyakeerthi3/-purplle_hackathon.git
+cd -purplle_hackathon
 pip install -r requirements.txt
-python generate_demo_data.py
 python server.py
 ```
 
@@ -150,6 +153,14 @@ Open:
 - Dashboard: http://localhost:8000/dashboard
 - Swagger docs: http://localhost:8000/docs
 - Health: http://localhost:8000/api/v1/health
+
+To regenerate demo data (optional):
+
+```bash
+pip install numpy
+python generate_demo_data.py
+```
+
 
 ## Full Video Pipeline
 
