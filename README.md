@@ -10,7 +10,7 @@ End-to-end retail store intelligence from CCTV footage: person detection, multi-
 
 Live demo: [https://vercel-dashboard.vercel.app](https://vercel-dashboard.vercel.app)
 
-Repository name: `purplle_hackathon`
+Repository name: `-purplle_hackathon`
 
 Built for the Purplle Tech Challenge 2026 Round 2.
 
