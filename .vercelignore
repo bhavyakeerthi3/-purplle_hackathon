@@ -1,0 +1,23 @@
+# Ignore all local data and raw video inputs/outputs
+data/
+output/**/*.mp4
+output/*.mp4
+
+# Ignore developer tools, testing files, and dashboards
+vercel-dashboard/
+build_static_dashboard.py
+test_server.py
+process_videos.py
+generate_demo_data.py
+
+# Ignore virtual environments and OS caches
+venv/
+.venv/
+.git/
+__pycache__/
+*.pt
+*.onnx
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

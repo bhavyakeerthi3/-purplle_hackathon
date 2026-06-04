@@ -8,6 +8,8 @@
 
 End-to-end retail store intelligence from CCTV footage: person detection, multi-object tracking, zone analytics, queue intelligence, anomaly detection, sales correlation, production APIs, and a live dashboard.
 
+Live demo: [https://vercel-dashboard.vercel.app](https://vercel-dashboard.vercel.app)
+
 Repository name: `-purplle_hackathon`
 
 Built for the Purplle Tech Challenge 2026 Round 2.
@@ -102,12 +104,14 @@ process_videos.py               YOLOv8 + ByteTrack video processing pipeline
 generate_demo_data.py           Synthetic data generator for instant demo mode
 server.py                       FastAPI app, API models, routes, dashboard serving, SSE
 dashboard.html                  Live local dashboard served by FastAPI
+build_static_dashboard.py       Builds static Vercel dashboard package
 test_server.py                  API unit tests
 Dockerfile                      Multi-stage production container
 docker-compose.yml              One-command local container run
 requirements.txt                API/runtime dependencies
 requirements-pipeline.txt       Full video pipeline dependencies
 output/                         Tracked demo analytics JSON/JSONL files
+vercel-dashboard/               Static Vercel dashboard
 scripts/import_demo_videos.ps1  Helper to import generated annotated videos
 ARCHITECTURE.md                 System design documentation
 SUBMISSION.md                   Short evaluator guide
@@ -311,6 +315,22 @@ Dashboard sections include:
 - Event feed.
 - Annotated video playback when local clips are available.
 
+## Vercel Static Dashboard
+
+The static dashboard is in:
+
+```text
+vercel-dashboard/
+```
+
+It contains baked demo data and can run without the FastAPI backend.
+
+Live deployment:
+
+```text
+https://vercel-dashboard.vercel.app
+```
+
 ## Testing
 
 Run API tests:
@@ -370,6 +390,7 @@ Tracked:
 - Demo JSON and JSONL analytics.
 - Documentation.
 - Docker and deployment files.
+- Static Vercel dashboard.
 
 Ignored:
 
@@ -398,6 +419,7 @@ This keeps the GitHub repository light and evaluator-friendly while allowing the
 - Pydantic schema validation: complete.
 - REST APIs: complete.
 - Live dashboard: complete.
+- Vercel demo: complete.
 - Conversion funnel: complete.
 - Demographics contract: complete.
 - Tests: complete.
