@@ -3,12 +3,14 @@ data/
 output/**/*.mp4
 output/*.mp4
 
-# Ignore developer tools, testing files, and dashboards
-vercel-dashboard/
+# Ignore developer tools, testing files, and Python backend
 build_static_dashboard.py
 test_server.py
 process_videos.py
 generate_demo_data.py
+server.py
+config.py
+dashboard.html
 
 # Ignore virtual environments and OS caches
 venv/
@@ -21,3 +23,12 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+.npm-cache/
+
+# Ignore Docker files (not needed for Vercel static deploy)
+Dockerfile
+docker-compose.yml
+
+# Ignore pipeline requirements
+requirements.txt
+requirements-pipeline.txt

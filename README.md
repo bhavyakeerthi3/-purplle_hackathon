@@ -316,6 +316,8 @@ vercel-dashboard/
 
 It contains baked demo data and can run without the FastAPI backend.
 
+The root `vercel.json` configures Vercel to serve the static dashboard from the `vercel-dashboard/` directory as the output. No build step or Python runtime is needed for deployment.
+
 Live deployment:
 
 ```text
