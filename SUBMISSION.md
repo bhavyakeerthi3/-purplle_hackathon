@@ -1,4 +1,4 @@
-<![CDATA[# Submission Guide
+# Submission Guide
 
 ## 🔴 Live Demo
 
@@ -85,8 +85,7 @@ The hackathon instruction says not to upload datasets or videos to GitHub. This 
 
 - `data/**/*.mp4`
 - `output/*.mp4`
-- generated JSON/JSONL analytics
+- large generated video files
 - Python caches
 
 Run the pipeline locally to regenerate outputs.
-]]>

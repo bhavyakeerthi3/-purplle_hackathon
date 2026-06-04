@@ -1,11 +1,10 @@
-<![CDATA[# 🛍️ Purplle Store Intelligence System
+# 🛍️ Purplle Store Intelligence System
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green) ![Docker](https://img.shields.io/badge/Docker-Ready-blue) ![YOLOv8](https://img.shields.io/badge/YOLOv8-Detection-purple) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 > End-to-end store intelligence from CCTV footage: person detection, multi-object tracking, zone analytics, queue intelligence, anomaly detection, sales correlation, production APIs, and a live dashboard.
 
-**🔴 Live Demo**: [View Dashboard](https://vercel-dashboard-eta-sand.vercel.app)
-
+**🔴 Live Demo**: [View Dashboard](https://purplle-intelligence.vercel.app/dashboard)
 
 Built for the **Purplle Tech Challenge 2026 — Round 2**. Runs in two modes:
 
@@ -194,4 +193,3 @@ SUBMISSION.md           Concise evaluator guide
 <p align="center">
   Built with ❤️ for the <strong>Purplle Tech Challenge 2026</strong>
 </p>
-]]>
