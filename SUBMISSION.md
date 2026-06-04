@@ -2,7 +2,7 @@
 
 ## 🔴 Live Demo
 
-**Dashboard**: [https://vercel-dashboard.vercel.app](https://vercel-dashboard.vercel.app)
+**Dashboard**: [https://vercel-dashboard-eta-sand.vercel.app](https://vercel-dashboard-eta-sand.vercel.app)
 
 
 ---
