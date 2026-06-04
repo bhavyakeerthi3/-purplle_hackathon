@@ -1,69 +1,143 @@
-# 🛍️ Purplle Store Intelligence System
+# Purplle Intelligence - Hackathon Submission
 
-![Python](https://img.shields.io/badge/Python-3.11-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green) ![Docker](https://img.shields.io/badge/Docker-Ready-blue) ![YOLOv8](https://img.shields.io/badge/YOLOv8-Detection-purple) ![License](https://img.shields.io/badge/License-MIT-yellow)
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green)
+![Docker](https://img.shields.io/badge/Docker-Ready-blue)
+![YOLOv8](https://img.shields.io/badge/YOLOv8-Detection-purple)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-> End-to-end store intelligence from CCTV footage: person detection, multi-object tracking, zone analytics, queue intelligence, anomaly detection, sales correlation, production APIs, and a live dashboard.
+End-to-end retail store intelligence from CCTV footage: person detection, multi-object tracking, zone analytics, queue intelligence, anomaly detection, sales correlation, production APIs, and a live dashboard.
 
-**🔴 Live Demo**: [View Dashboard](https://purplle-intelligence.vercel.app/dashboard)
+Live demo: [https://purplle-intelligence.vercel.app](https://purplle-intelligence.vercel.app)
 
-Built for the **Purplle Tech Challenge 2026 — Round 2**. Runs in two modes:
+Repository name: `purplle_hackathon`
 
-| Mode | Description |
-|------|-------------|
-| **Demo mode** | Synthetic events, sales, and anomalies — instant evaluation without videos |
-| **Full pipeline** | YOLOv8 + ByteTrack processing over store CCTV videos in `data/` |
+Built for the Purplle Tech Challenge 2026 Round 2.
 
-> ⚠️ Do not commit the hackathon dataset or video files. The `.gitignore` excludes local videos and compressed media while keeping demo JSON/JSONL analytics available for evaluators.
+**Important:** raw hackathon videos and large generated media are intentionally not committed. Demo JSON/JSONL analytics are tracked so evaluators can run the API and dashboard immediately.
 
----
+## What This Solves
 
-## ✨ Key Features
+Purplle store teams need visibility into what happens between a customer entering a store and completing a purchase. This project converts CCTV footage into structured analytics:
 
-- 🎯 **Person Detection & Tracking** — YOLOv8 + ByteTrack for stable identity across frames
-- 🗺️ **Zone-Based Analytics** — Polygon-configured zones per camera for dwell time, peak occupancy, and heatmap generation
-- 🚶 **Footfall Intelligence** — Unique visitor counting from entry cameras across multiple stores
-- 🕐 **Queue Analytics** — Billing queue completion, abandonment, and wait-time metrics
-- ⚡ **Real-Time Anomaly Detection** — Crowd density alerts, dead zones, high dwell, queue drops
-- 💰 **Sales Correlation** — Overlay POS transaction data onto visual intelligence for conversion insights
-- 📊 **Live Dashboard** — Auto-refreshing KPI cards, charts, video playback, and event feed
-- 🔌 **Production-Grade APIs** — FastAPI with filtering, pagination, health checks, SSE streaming, and Swagger docs
-- 📝 **Event Streaming** — Append-only JSONL event log, replayable and Kafka-ready
-- 🐳 **Docker-Ready** — Single-command deployment with `docker-compose`
+- How many visitors entered each store.
+- Which shelves or zones attracted attention.
+- Where customers spent the most time.
+- How crowded each zone became.
+- How many customers reached billing.
+- How many customers abandoned the queue.
+- How sales correlate with store traffic and hourly behavior.
+- Which operational anomalies require action.
 
----
+## Core Features
 
-## 🏗️ Architecture Diagram
+- YOLOv8 person detection.
+- ByteTrack multi-object tracking.
+- Polygon-based zone assignment per camera.
+- Entry, exit, zone enter, zone exit, queue completed, and queue abandoned event generation.
+- JSONL event log suitable for replay and streaming.
+- Store-level analytics for 2 stores and 8 cameras.
+- Dwell time, unique visitor, peak occupancy, and heatmap metrics.
+- Queue wait-time and abandonment analytics.
+- Conversion funnel: Store Entry -> Zone Browsing -> Billing Queue -> Purchase.
+- Demo-mode demographics endpoint for aggregate gender and age buckets.
+- Sales analytics with POS fallback.
+- Anomaly detection for high crowd density, high dwell, dead zones, and queue abandonment.
+- FastAPI REST API with Pydantic response models.
+- Pagination and filtering for events.
+- Server-sent event replay stream.
+- Swagger API docs at `/docs`.
+- Live dashboard with KPI cards, charts, heatmaps, video panels, anomalies, and event feed.
+- Vercel static dashboard package for live evaluator access.
+- Docker and Docker Compose support.
+- Unit tests for the main API endpoints.
+
+## Evaluation Criteria Coverage
+
+| Requirement | Status | Implementation |
+|---|---:|---|
+| Containerized solution | Done | `Dockerfile`, `docker-compose.yml` |
+| Runs out of the box | Done | Docker build generates demo data automatically |
+| Schema-validated events | Done | Pydantic response models in `server.py` |
+| REST API | Done | FastAPI endpoints under `/api/v1` |
+| Dashboard | Done | `dashboard.html` plus Vercel static dashboard |
+| Event streaming | Done | `/api/v1/events/stream` SSE replay |
+| Conversion funnel | Done | `/api/v1/store/{store_id}/funnel` |
+| Queue analytics | Done | `/api/v1/store/{store_id}/queue` |
+| Anomaly detection | Done | `/api/v1/anomalies` |
+| Sales correlation | Done | `sales_analytics.json` and sales APIs |
+| Documentation | Done | `README.md`, `ARCHITECTURE.md`, `SUBMISSION.md` |
+| Tests | Done | `test_server.py` |
+| Deployment | Done | Vercel dashboard link |
+
+## Architecture
 
 ```text
-┌─────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-│ CCTV Feeds  │───▸│ YOLOv8 +     │───▸│ Event Engine │───▸│ FastAPI +    │
-│ (8 cameras) │    │ ByteTrack    │    │ (JSONL)      │    │ Dashboard    │
-└─────────────┘    └──────────────┘    └──────────────┘    └──────────────┘
-                          │                    │                    │
-                   ┌──────▾──────┐    ┌───────▾───────┐   ┌───────▾───────┐
-                   │ Zone Polygon│    │ Anomaly       │   │ Swagger Docs  │
-                   │ Assignment  │    │ Detection     │   │ /docs         │
-                   └─────────────┘    └───────────────┘   └───────────────┘
+CCTV videos
+    |
+    v
+YOLOv8 person detection
+    |
+    v
+ByteTrack tracking
+    |
+    v
+Zone polygon analytics
+    |
+    +--> JSONL event log
+    +--> Store analytics JSON
+    +--> Sales analytics JSON
+    +--> Anomaly JSON
+    |
+    v
+FastAPI REST + SSE
+    |
+    v
+Dashboard + Swagger docs + Vercel static demo
 ```
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for design trade-offs, event schema decisions, and production-readiness notes.
+See [ARCHITECTURE.md](ARCHITECTURE.md) for design trade-offs, event schema details, privacy notes, and production upgrade paths.
 
----
+## Project Structure
 
-## 🐳 Docker Quick Start
+```text
+config.py                       Store, camera, and zone polygon configuration
+process_videos.py               YOLOv8 + ByteTrack video processing pipeline
+generate_demo_data.py           Synthetic data generator for instant demo mode
+server.py                       FastAPI app, API models, routes, dashboard serving, SSE
+dashboard.html                  Live local dashboard served by FastAPI
+build_static_dashboard.py       Builds static Vercel dashboard package
+test_server.py                  API unit tests
+Dockerfile                      Multi-stage production container
+docker-compose.yml              One-command local container run
+requirements.txt                API/runtime dependencies
+requirements-pipeline.txt       Full video pipeline dependencies
+output/                         Tracked demo analytics JSON/JSONL files
+vercel-dashboard/               Static Vercel dashboard
+scripts/import_demo_videos.ps1  Helper to import generated annotated videos
+ARCHITECTURE.md                 System design documentation
+SUBMISSION.md                   Short evaluator guide
+```
+
+## Quick Start With Docker
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
-Then open:
+Open:
 
-- **Dashboard**: [http://localhost:8000/dashboard](http://localhost:8000/dashboard)
-- **Swagger Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- Local dashboard: [http://localhost:8000/dashboard](http://localhost:8000/dashboard)
+- Swagger docs: [http://localhost:8000/docs](http://localhost:8000/docs)
+- Health check: [http://localhost:8000/api/v1/health](http://localhost:8000/api/v1/health)
 
----
+Stop the stack:
 
-## 🚀 Quick Start (Local)
+```bash
+docker compose down
+```
+
+## Quick Start Locally
 
 ```bash
 pip install -r requirements.txt
@@ -77,11 +151,15 @@ Open:
 - Swagger docs: http://localhost:8000/docs
 - Health: http://localhost:8000/api/v1/health
 
----
+## Full Video Pipeline
 
-## 🎬 Full Video Pipeline
+Install the pipeline dependencies:
 
-Place videos in these local folders:
+```bash
+pip install -r requirements-pipeline.txt
+```
+
+Place videos in this layout:
 
 ```text
 data/store1/
@@ -97,7 +175,7 @@ data/store2/
   entry 2.mp4
 ```
 
-Then run:
+Run the pipeline:
 
 ```bash
 python process_videos.py
@@ -107,96 +185,238 @@ python server.py
 Useful options:
 
 ```bash
-python process_videos.py --store ST1      # Process single store
-python process_videos.py --store ST2      # Process single store
-python process_videos.py --skip-compress  # Skip video compression
-python server.py --port 9000             # Custom port
+python process_videos.py --store ST1
+python process_videos.py --store ST2
+python process_videos.py --skip-compress
+python server.py --port 9000
 ```
 
-If you already generated annotated YOLO clips elsewhere, import them into `output/`:
+Pipeline outputs:
+
+```text
+output/generated_events.jsonl
+output/store_analytics.json
+output/sales_analytics.json
+output/anomalies.json
+output/output_<store>_<camera>.mp4
+output/compressed_<store>_<camera>.mp4
+```
+
+## Import Already Generated YOLO Videos
+
+If annotated videos already exist in Downloads, import them into `output/`:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\import_demo_videos.ps1 -Source "$env:USERPROFILE\Downloads"
 ```
 
----
+The dashboard expects compressed clips with these names:
 
-## 📡 API Highlights
+```text
+compressed_ST1008_CAM1.mp4
+compressed_ST1008_CAM2.mp4
+compressed_ST1008_CAM3.mp4
+compressed_ST1008_CAM5.mp4
+compressed_ST1009_CAM1.mp4
+compressed_ST1009_CAM_B.mp4
+compressed_ST1009_CAM_E1.mp4
+compressed_ST1009_CAM_E2.mp4
+```
+
+## API Endpoints
 
 | Endpoint | Purpose |
-|----------|---------|
+|---|---|
+| `GET /` | Service metadata with dynamic dashboard/docs URLs |
 | `GET /api/v1/health` | Data readiness check |
-| `GET /api/v1/store/{store_id}/overview` | Store KPI summary |
+| `GET /api/v1/schema/events` | Event contract documentation |
 | `GET /api/v1/store/all/overview` | Combined KPI summary |
 | `GET /api/v1/stores/overview` | Alias for combined KPI summary |
+| `GET /api/v1/store/{store_id}/overview` | Store KPI summary |
 | `GET /api/v1/store/{store_id}/footfall` | Zone dwell analytics |
 | `GET /api/v1/store/{store_id}/heatmap` | Peak and average occupancy |
-| `GET /api/v1/store/{store_id}/queue` | Queue served, abandoned, wait metrics |
+| `GET /api/v1/store/{store_id}/queue` | Queue served, abandoned, and wait metrics |
 | `GET /api/v1/store/{store_id}/funnel` | Conversion funnel analytics |
-| `GET /api/v1/store/{store_id}/demographics` | Demo-mode aggregated demographic breakdown |
-| `GET /api/v1/sales/summary` | Revenue, order, brand summary |
-| `GET /api/v1/sales/hourly` | Revenue by hour |
+| `GET /api/v1/store/{store_id}/demographics` | Demo-mode aggregate demographic breakdown |
+| `GET /api/v1/sales/summary` | Revenue, order, and brand summary |
+| `GET /api/v1/sales/hourly` | Revenue and orders by hour |
 | `GET /api/v1/anomalies` | Detected operational anomalies |
 | `GET /api/v1/events` | Paginated event log with filters |
 | `GET /api/v1/events/stream` | Server-sent event replay stream |
-| `GET /api/v1/schema/events` | Event contract documentation |
 
-### 💻 curl Examples
+## API Examples
 
 ```bash
-# Health check
 curl http://localhost:8000/api/v1/health
-
-# Store overview for ST1008
 curl http://localhost:8000/api/v1/store/ST1008/overview
-
-# Filter events by type and store
-curl "http://localhost:8000/api/v1/events?store_id=ST1008&event_type=zone_entered&limit=10"
-
-# Queue metrics
+curl http://localhost:8000/api/v1/store/ST1008/footfall
+curl http://localhost:8000/api/v1/store/ST1008/heatmap
 curl http://localhost:8000/api/v1/store/ST1008/queue
-
-# Conversion funnel
 curl http://localhost:8000/api/v1/store/ST1008/funnel
-
-# All anomalies
-curl http://localhost:8000/api/v1/anomalies
-
-# Sales summary
+curl http://localhost:8000/api/v1/store/ST1008/demographics
 curl http://localhost:8000/api/v1/sales/summary
-
-# SSE event stream (real-time replay)
+curl http://localhost:8000/api/v1/anomalies
+curl "http://localhost:8000/api/v1/events?store_id=ST1008&event_type=zone_entered&limit=10"
 curl -N http://localhost:8000/api/v1/events/stream
 ```
 
----
+## Event Schema
 
-## 📁 Project Structure
+The normalized event stream supports:
+
+- `entry`
+- `exit`
+- `zone_entered`
+- `zone_exited`
+- `queue_completed`
+- `queue_abandoned`
+
+Common fields include:
+
+- `event_type`
+- `store_id` or `store_code`
+- `camera_id`
+- `track_id` or `id_token`
+- event timestamp fields
+
+The API exposes the full event contract at:
 
 ```text
-config.py               Store, camera, and zone polygon configuration
-process_videos.py       Detection, tracking, event generation, analytics
-generate_demo_data.py   Synthetic data for evaluator-friendly demo mode
-server.py               FastAPI app, dashboard serving, APIs, SSE stream
-dashboard.html          Live analytics dashboard
-requirements.txt        Runtime dependencies
-ARCHITECTURE.md         System design and production notes
-SUBMISSION.md           Concise evaluator guide
+GET /api/v1/schema/events
 ```
 
----
+## Dashboard
 
-## 🔧 Production Readiness Notes
+The local dashboard is served by FastAPI:
 
-- The event log is JSONL to mimic append-only streaming and make replay/debugging easy.
-- `config.py` separates business zone definitions from model inference code.
-- API endpoints support filtering, pagination, health checks, and documented contracts.
-- The system degrades gracefully into demo mode when videos or POS data are unavailable.
-- Demographics are demo-mode aggregate labels that show the API/dashboard contract; production use would require consent-aware local inference and no PII storage.
-- In production, JSONL output would be replaced with Kafka/PubSub, object storage, and a time-series or analytical database.
+```text
+http://localhost:8000/dashboard
+```
 
----
+Dashboard sections include:
 
-<p align="center">
-  Built with ❤️ for the <strong>Purplle Tech Challenge 2026</strong>
-</p>
+- Overview KPIs.
+- Conversion funnel.
+- Demographic breakdown.
+- Store footfall analytics.
+- Heatmap view.
+- Queue analytics.
+- Sales trends.
+- Anomaly timeline.
+- Event feed.
+- Annotated video playback when local clips are available.
+
+## Vercel Static Dashboard
+
+The static dashboard is in:
+
+```text
+vercel-dashboard/
+```
+
+It contains baked demo data and can run without the FastAPI backend.
+
+Live deployment:
+
+```text
+https://purplle-intelligence.vercel.app
+```
+
+## Testing
+
+Run API tests:
+
+```bash
+python -m unittest test_server.py
+```
+
+Verified locally:
+
+```text
+Ran 10 tests
+OK
+```
+
+## Docker Verification
+
+The Docker build was verified with:
+
+```bash
+docker compose build
+docker compose up -d
+curl http://localhost:8000/api/v1/health
+docker compose down
+```
+
+Expected health response:
+
+```json
+{
+  "ready": true,
+  "files": {
+    "store_analytics.json": true,
+    "sales_analytics.json": true,
+    "anomalies.json": true,
+    "generated_events.jsonl": true
+  }
+}
+```
+
+## Privacy And Responsible AI
+
+Demographics in this hackathon build are demo-mode aggregate labels used to demonstrate the dashboard and API contract. A production deployment should:
+
+- Use consent-aware local inference.
+- Avoid storing faces or personally identifiable data.
+- Persist only aggregate counts.
+- Document retention and deletion policies.
+- Provide store-level governance for CCTV analytics.
+
+## Git And Media Policy
+
+Tracked:
+
+- Source code.
+- Configuration.
+- Demo JSON and JSONL analytics.
+- Documentation.
+- Docker and deployment files.
+- Static Vercel dashboard.
+
+Ignored:
+
+- Raw CCTV videos in `data/`.
+- Full-resolution generated videos in `output/output_*.mp4`.
+- Optional compressed generated clips in `output/compressed_*.mp4`.
+- Model weights and caches.
+- Virtual environments and local tool caches.
+
+This keeps the GitHub repository light and evaluator-friendly while allowing the complete video pipeline to run locally.
+
+## Production Upgrade Path
+
+- Replace JSONL files with Kafka, Pub/Sub, or Kinesis.
+- Store analytics in Postgres, BigQuery, ClickHouse, or DuckDB.
+- Move generated video artifacts to object storage.
+- Add background workers for long-running video processing.
+- Add authenticated dashboard access.
+- Add alert routing for operational anomalies.
+- Add cross-camera re-identification with privacy safeguards.
+- Add observability with metrics, traces, and structured logs.
+
+## Submission Checklist
+
+- Dockerized solution: complete.
+- Pydantic schema validation: complete.
+- REST APIs: complete.
+- Live dashboard: complete.
+- Vercel demo: complete.
+- Conversion funnel: complete.
+- Demographics contract: complete.
+- Tests: complete.
+- Generated demo analytics: complete.
+- Large videos excluded from Git: complete.
+
+## License
+
+MIT
