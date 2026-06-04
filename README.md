@@ -110,12 +110,17 @@ Dockerfile                      Multi-stage production container
 docker-compose.yml              One-command local container run
 requirements.txt                API/runtime dependencies
 requirements-pipeline.txt       Full video pipeline dependencies
+notebooks/Training_set.ipynb    Google Colab T4 training notebook for YOLO output experiments
 output/                         Tracked demo analytics JSON/JSONL files
 vercel-dashboard/               Static Vercel dashboard
 scripts/import_demo_videos.ps1  Helper to import generated annotated videos
 ARCHITECTURE.md                 System design documentation
 SUBMISSION.md                   Short evaluator guide
 ```
+
+## Training Notebook
+
+`notebooks/Training_set.ipynb` documents the Google Colab T4 workflow used to train and validate the outputs for the YOLO video-processing pipeline.
 
 ## Quick Start With Docker
 
