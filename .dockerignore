@@ -1,0 +1,39 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE / editor
+.git/
+.gitignore
+.vscode/
+.idea/
+*.swp
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Large video files
+output/*.mp4
+data/**/*.mp4
+
+# Model weights
+*.pt
+*.onnx
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Project-specific excludes
+base64.txt
+logo.jpg
+
+# Docker files (no need to send themselves into context)
+Dockerfile
+docker-compose.yml
+.dockerignore
+README.md
+LICENSE

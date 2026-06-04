@@ -1,0 +1,71 @@
+[
+  {
+    "type": "HIGH_CROWD_DENSITY",
+    "severity": "HIGH",
+    "store_id": "ST1008",
+    "camera_id": "CAM1",
+    "zone": "foh_center",
+    "peak_count": 5,
+    "message": "Peak 5 people in foh_center"
+  },
+  {
+    "type": "HIGH_DWELL_TIME",
+    "severity": "INFO",
+    "store_id": "ST1008",
+    "camera_id": "CAM1",
+    "zone": "left_wall_brands",
+    "avg_dwell_sec": 48.03,
+    "message": "High avg dwell 48.03s in left_wall_brands"
+  },
+  {
+    "type": "HIGH_CROWD_DENSITY",
+    "severity": "HIGH",
+    "store_id": "ST1008",
+    "camera_id": "CAM2",
+    "zone": "makeup_unit",
+    "peak_count": 5,
+    "message": "Peak 5 people in makeup_unit"
+  },
+  {
+    "type": "HIGH_DWELL_TIME",
+    "severity": "INFO",
+    "store_id": "ST1008",
+    "camera_id": "CAM2",
+    "zone": "makeup_unit",
+    "avg_dwell_sec": 45.5,
+    "message": "High avg dwell 45.5s in makeup_unit"
+  },
+  {
+    "type": "HIGH_CROWD_DENSITY",
+    "severity": "HIGH",
+    "store_id": "ST1008",
+    "camera_id": "CAM5",
+    "zone": "billing_counter_queue",
+    "peak_count": 6,
+    "message": "Peak 6 people in billing_counter_queue"
+  },
+  {
+    "type": "HIGH_CROWD_DENSITY",
+    "severity": "MEDIUM",
+    "store_id": "ST1009",
+    "camera_id": "CAM1",
+    "zone": "gondola_area",
+    "peak_count": 4,
+    "message": "Peak 4 people in gondola_area"
+  },
+  {
+    "type": "HIGH_CROWD_DENSITY",
+    "severity": "HIGH",
+    "store_id": "ST1009",
+    "camera_id": "CAM_B",
+    "zone": "billing_counter_queue",
+    "peak_count": 7,
+    "message": "Peak 7 people in billing_counter_queue"
+  },
+  {
+    "type": "QUEUE_ABANDONMENT",
+    "severity": "HIGH",
+    "count": 10,
+    "message": "10 customers abandoned billing queue"
+  }
+]

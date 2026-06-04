@@ -1,0 +1,108 @@
+{
+  "total_revenue": 141680.52,
+  "total_orders": 174,
+  "hourly": [
+    {
+      "hour": 10,
+      "orders": 10,
+      "revenue": 7111.31
+    },
+    {
+      "hour": 11,
+      "orders": 19,
+      "revenue": 8253.49
+    },
+    {
+      "hour": 12,
+      "orders": 22,
+      "revenue": 21555.53
+    },
+    {
+      "hour": 13,
+      "orders": 20,
+      "revenue": 14339.02
+    },
+    {
+      "hour": 14,
+      "orders": 7,
+      "revenue": 18819.94
+    },
+    {
+      "hour": 15,
+      "orders": 13,
+      "revenue": 7322.18
+    },
+    {
+      "hour": 16,
+      "orders": 9,
+      "revenue": 8743.08
+    },
+    {
+      "hour": 17,
+      "orders": 21,
+      "revenue": 5405.08
+    },
+    {
+      "hour": 18,
+      "orders": 5,
+      "revenue": 21511.6
+    },
+    {
+      "hour": 19,
+      "orders": 21,
+      "revenue": 8550.6
+    },
+    {
+      "hour": 20,
+      "orders": 8,
+      "revenue": 15119.52
+    },
+    {
+      "hour": 21,
+      "orders": 19,
+      "revenue": 4949.17
+    }
+  ],
+  "top_brands": [
+    {
+      "brand_name": "Nykaa",
+      "total_amount": 50343.89
+    },
+    {
+      "brand_name": "Colorbar",
+      "total_amount": 45362.7
+    },
+    {
+      "brand_name": "Plum",
+      "total_amount": 27603.83
+    },
+    {
+      "brand_name": "L'Oreal",
+      "total_amount": 26978.28
+    },
+    {
+      "brand_name": "MAC",
+      "total_amount": 20353.88
+    },
+    {
+      "brand_name": "Maybelline",
+      "total_amount": 17648.29
+    },
+    {
+      "brand_name": "Sugar",
+      "total_amount": 16118.96
+    },
+    {
+      "brand_name": "Faces",
+      "total_amount": 9476.18
+    },
+    {
+      "brand_name": "Revlon",
+      "total_amount": 7136.48
+    },
+    {
+      "brand_name": "Lakme",
+      "total_amount": 4588.74
+    }
+  ]
+}

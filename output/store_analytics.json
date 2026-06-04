@@ -1,0 +1,153 @@
+{
+  "ST1008": {
+    "CAM1": {
+      "dwell": {
+        "left_wall_brands": {
+          "unique_visitors": 13,
+          "avg_dwell_sec": 48.03,
+          "max_dwell_sec": 104.77
+        },
+        "foh_center": {
+          "unique_visitors": 17,
+          "avg_dwell_sec": 19.46,
+          "max_dwell_sec": 71.82
+        }
+      },
+      "peak": {
+        "left_wall_brands": {
+          "peak_count": 1,
+          "avg_count": 1.48
+        },
+        "foh_center": {
+          "peak_count": 5,
+          "avg_count": 2.84
+        }
+      }
+    },
+    "CAM2": {
+      "dwell": {
+        "right_wall_brands": {
+          "unique_visitors": 13,
+          "avg_dwell_sec": 9.35,
+          "max_dwell_sec": 106.59
+        },
+        "makeup_unit": {
+          "unique_visitors": 14,
+          "avg_dwell_sec": 45.5,
+          "max_dwell_sec": 60.63
+        }
+      },
+      "peak": {
+        "right_wall_brands": {
+          "peak_count": 2,
+          "avg_count": 2.21
+        },
+        "makeup_unit": {
+          "peak_count": 5,
+          "avg_count": 2.95
+        }
+      }
+    },
+    "CAM3": {
+      "dwell": {
+        "store_entry": {
+          "unique_visitors": 11,
+          "avg_dwell_sec": 34.12,
+          "max_dwell_sec": 76.5
+        }
+      },
+      "peak": {
+        "store_entry": {
+          "peak_count": 2,
+          "avg_count": 0.8
+        }
+      }
+    },
+    "CAM5": {
+      "dwell": {
+        "billing_counter_queue": {
+          "unique_visitors": 16,
+          "avg_dwell_sec": 30.96,
+          "max_dwell_sec": 98.23
+        }
+      },
+      "peak": {
+        "billing_counter_queue": {
+          "peak_count": 6,
+          "avg_count": 2.17
+        }
+      }
+    }
+  },
+  "ST1009": {
+    "CAM1": {
+      "dwell": {
+        "main_zone": {
+          "unique_visitors": 18,
+          "avg_dwell_sec": 29.06,
+          "max_dwell_sec": 31.55
+        },
+        "gondola_area": {
+          "unique_visitors": 10,
+          "avg_dwell_sec": 22.39,
+          "max_dwell_sec": 82.34
+        }
+      },
+      "peak": {
+        "main_zone": {
+          "peak_count": 3,
+          "avg_count": 1.28
+        },
+        "gondola_area": {
+          "peak_count": 4,
+          "avg_count": 2.44
+        }
+      }
+    },
+    "CAM_E1": {
+      "dwell": {
+        "entry_left": {
+          "unique_visitors": 14,
+          "avg_dwell_sec": 28.0,
+          "max_dwell_sec": 97.13
+        }
+      },
+      "peak": {
+        "entry_left": {
+          "peak_count": 3,
+          "avg_count": 1.73
+        }
+      }
+    },
+    "CAM_E2": {
+      "dwell": {
+        "entry_right": {
+          "unique_visitors": 17,
+          "avg_dwell_sec": 20.73,
+          "max_dwell_sec": 52.63
+        }
+      },
+      "peak": {
+        "entry_right": {
+          "peak_count": 1,
+          "avg_count": 3.02
+        }
+      }
+    },
+    "CAM_B": {
+      "dwell": {
+        "billing_counter_queue": {
+          "unique_visitors": 13,
+          "avg_dwell_sec": 13.62,
+          "max_dwell_sec": 78.23
+        }
+      },
+      "peak": {
+        "billing_counter_queue": {
+          "peak_count": 7,
+          "avg_count": 2.92
+        }
+      }
+    }
+  }
+}

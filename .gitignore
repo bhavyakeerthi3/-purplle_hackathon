@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local datasets and generated media
+data/**/*.mp4
+data/**/*.mov
+data/**/*.avi
+data/**/*.mkv
+data/**/*.png
+data/**/*.jpg
+data/**/*.jpeg
+output/*.mp4
+
+
+# Model/download caches
+*.pt
+*.onnx
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
