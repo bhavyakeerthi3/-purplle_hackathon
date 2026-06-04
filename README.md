@@ -8,7 +8,7 @@
 
 End-to-end retail store intelligence from CCTV footage: person detection, multi-object tracking, zone analytics, queue intelligence, anomaly detection, sales correlation, production APIs, and a live dashboard.
 
-Live demo: [https://purplle-intelligence.vercel.app](https://purplle-intelligence.vercel.app)
+Live demo: [https://vercel-dashboard.vercel.app](https://vercel-dashboard.vercel.app)
 
 Repository name: `purplle_hackathon`
 
@@ -319,7 +319,7 @@ It contains baked demo data and can run without the FastAPI backend.
 Live deployment:
 
 ```text
-https://purplle-intelligence.vercel.app
+https://vercel-dashboard.vercel.app
 ```
 
 ## Testing

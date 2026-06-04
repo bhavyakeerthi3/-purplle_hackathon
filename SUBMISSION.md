@@ -2,7 +2,7 @@
 
 ## 🔴 Live Demo
 
-**Dashboard**: [https://purplle-intelligence.vercel.app](https://purplle-intelligence.vercel.app)
+**Dashboard**: [https://vercel-dashboard.vercel.app](https://vercel-dashboard.vercel.app)
 
 
 ---
