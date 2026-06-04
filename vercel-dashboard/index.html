@@ -4998,6 +4998,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('api-host-input').value = API;
 });
 
+let currentStore = 'ST1008';
+
 function formatHour12(h) {
   const hr = parseInt(h, 10);
   if (hr === 0) return '12am';

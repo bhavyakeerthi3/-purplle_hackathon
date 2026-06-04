@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "buildCommand": "",
-  "installCommand": "",
-  "outputDirectory": "vercel-dashboard",
-  "cleanUrls": true,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "server.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.py"
     }
   ]
 }
