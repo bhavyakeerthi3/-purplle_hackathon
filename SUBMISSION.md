@@ -2,7 +2,8 @@
 
 ## 🔴 Live Demo
 
-**Dashboard**: [https://purplle-intelligence.vercel.app](https://purplle-intelligence.vercel.app) *(placeholder — will update with final deployment URL)*
+**Dashboard**: [https://vercel-dashboard-eta-sand.vercel.app](https://vercel-dashboard-eta-sand.vercel.app)
+
 
 ---
 

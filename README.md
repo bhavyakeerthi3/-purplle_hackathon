@@ -4,7 +4,8 @@
 
 > End-to-end store intelligence from CCTV footage: person detection, multi-object tracking, zone analytics, queue intelligence, anomaly detection, sales correlation, production APIs, and a live dashboard.
 
-**🔴 Live Demo**: [View Dashboard](https://purplle-intelligence.vercel.app) *(placeholder URL, will update later)*
+**🔴 Live Demo**: [View Dashboard](https://vercel-dashboard-eta-sand.vercel.app)
+
 
 Built for the **Purplle Tech Challenge 2026 — Round 2**. Runs in two modes:
 
