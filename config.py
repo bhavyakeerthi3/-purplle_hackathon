@@ -15,9 +15,13 @@ BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR    = os.path.join(BASE_DIR, "data")
 OUTPUT_DIR  = os.path.join(BASE_DIR, "output")
 
-os.makedirs(os.path.join(DATA_DIR, "store1"), exist_ok=True)
-os.makedirs(os.path.join(DATA_DIR, "store2"), exist_ok=True)
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+try:
+    os.makedirs(os.path.join(DATA_DIR, "store1"), exist_ok=True)
+    os.makedirs(os.path.join(DATA_DIR, "store2"), exist_ok=True)
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+except Exception:
+    # Ignore directory creation failures in read-only filesystems (e.g. Vercel)
+    pass
 
 # ── Store configuration ───────────────────────────────────────────
 # STORE_CONFIG uses numpy for polygon definitions and is only needed
